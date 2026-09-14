@@ -1,0 +1,1036 @@
+  :root{
+    --background:#edf4fd; --foreground:#101725; --card:#fcfeff; --card-foreground:#101725;
+    --popover:#fcfeff; --popover-foreground:#101725; --primary:#1f54e1; --primary-foreground:#f9fcff;
+    --secondary:#e0e9f4; --secondary-foreground:#181f2e; --muted:#e0e9f4; --muted-foreground:#5f6a7b;
+    --accent:#cfe0f5; --accent-foreground:#181f2e; --destructive:#ea1d3b; --destructive-foreground:#f9fcff;
+    --border:#cbd5e2; --input:#cbd5e2; --ring:#1f54e1; --reel:#070d19; --reel-foreground:#f1f5fb;
+    --reel-muted:#8b939f; --hero-sky:#bce9fe; --hero-foreground:#032137; --hero-muted:#385971;
+    --hero-line:#75b1ce; --ink:#05070c; --ink-foreground:#f1f5fb; --signal:#f12848; --mint:#45d5b6;
+    --violet:#b27dff; --gold:#dbb155; --radius:.75rem;
+  }
+  @font-face {
+    font-family: 'progressFont';
+    src: url('fonts/ProgressPersonalUse.ttf') format('truetype'),
+         url('https://acmnitsurat.in/_next/static/media/ProgressPersonalUse_EaJdz-s.p.21dj2cb-x5mpv.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'crampsFont';
+    src: url('fonts/CrampsRegular.ttf') format('truetype'),
+         url('https://acmnitsurat.in/_next/static/media/CrampsRegular_OV7od-s.p.426vylq985k86.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body{ font-family: Inter, ui-sans-serif, system-ui, sans-serif; background:var(--background); color:var(--foreground); -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4{ font-family:"Space Grotesk", Inter, sans-serif; }
+
+  .label-mono{ font-family:"Geist Mono", ui-monospace, monospace; letter-spacing:.22em; text-transform:uppercase; font-size:.6875rem; }
+  .display-grit{
+    font-family: 'progressFont', "Monument Extended", "Space Grotesk", sans-serif;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    font-weight: 400;
+  }
+  .display-grit .block{
+    display:block;
+    position:relative;
+    color: var(--hero-foreground);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .display-grit .block.text-primary{ color: var(--primary); }
+
+  .grunge-title{
+    font-family: 'crampsFont', "Space Grotesk", sans-serif;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    line-height:.9;
+  }
+  .font-heading{ font-family:"Space Grotesk", Inter, sans-serif; }
+  .font-mono{ font-family:"Geist Mono", ui-monospace, monospace; }
+
+  .grain-overlay{ opacity:.08; mix-blend-mode:overlay; pointer-events:none; position:absolute; inset:0; background:repeating-radial-gradient(circle at 0 0, rgba(0,0,0,.04) 0 1px, transparent 1px 2px); }
+  .concrete-overlay{ opacity:.04; pointer-events:none; position:absolute; inset:0; background:repeating-linear-gradient(45deg, rgba(0,0,0,.03) 0 2px, transparent 2px 6px); }
+
+  .hero-light-bg{
+    background: radial-gradient(120% 90% at 78% 30%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 60%),
+                radial-gradient(90% 70% at 8% 90%, color-mix(in oklab, var(--hero-sky) 72%, white), transparent 65%),
+                var(--hero-sky);
+  }
+  .hero-reel-glow{ background: radial-gradient(circle at 50% 45%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 65%); }
+  .hero-light-video{ display:block; opacity:.35; }
+  .hero-tint-overlay{ opacity:.65; mix-blend-mode:normal; }
+
+  @keyframes float-soft{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  .float-soft{ animation: float-soft 7s ease-in-out infinite; }
+
+  /* ========================================================
+     LIGHT ACM NIT SURAT THEMED NAVBAR SPECIFICATION
+  ======================================================== */
+  .acm-navbar-header {
+    pointer-events: none;
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+    padding: 14px 0;
+  }
+  .acm-navbar-header.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 20px -5px rgba(16, 23, 37, 0.08);
+  }
+  .acm-navbar-nav {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  .acm-brand-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 16px 6px 8px;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 95%, transparent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .acm-brand-block:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(31, 84, 225, 0.12);
+    transform: translateY(-1px);
+  }
+  .acm-brand-logo-svg {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  .acm-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .acm-brand-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--foreground);
+    letter-spacing: 0.02em;
+  }
+  .acm-brand-sub {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+  }
+  .acm-brand-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 2px;
+  }
+  .acm-fablab-pill {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--primary) 10%, transparent);
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid color-mix(in oklab, var(--primary) 25%, transparent);
+  }
+
+  /* ---------------- Center Interactive Plate ---------------- */
+  .acm-plate-wrapper {
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .acm-plate-wrapper {
+      display: flex;
+    }
+  }
+  .acm-plate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in oklab, var(--primary) 28%, var(--border));
+    background: repeating-linear-gradient(115deg, transparent 0 2px, rgba(31, 84, 225, 0.015) 2px 4px),
+                color-mix(in oklab, var(--card) 96%, transparent);
+    box-shadow: 0 2px 14px rgba(31, 84, 225, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    cursor: default;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+  }
+  .acm-plate-wrapper:hover .acm-plate,
+  .acm-plate.is-expanded {
+    border-color: var(--primary);
+    box-shadow: 0 4px 22px rgba(31, 84, 225, 0.16), 0 0 10px rgba(31, 84, 225, 0.1);
+  }
+  .acm-plate:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 6%;
+    right: 6%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(31,84,225,0.4) 20%, #1f54e1 50%, rgba(31,84,225,0.4) 80%, transparent 100%);
+    animation: acmPlateLaser 3.5s ease-in-out infinite;
+  }
+  @keyframes acmPlateLaser {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.95; }
+  }
+  .acm-plate-background {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .acm-reg-mark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.35;
+    user-select: none;
+  }
+  .acm-reg-left { left: 6px; }
+  .acm-reg-right { right: 6px; }
+
+  .acm-plate-ambient-sweep {
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(31, 84, 225, 0.08) 50%, transparent 100%);
+    animation: acmPlateSweep 8s ease-in-out infinite;
+  }
+  @keyframes acmPlateSweep {
+    0%, 80%, 100% { transform: translateX(0); opacity: 0; }
+    25% { opacity: 1; }
+    50% { transform: translateX(500px); opacity: 0; }
+  }
+
+  .acm-plate-dust {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .acm-dust-mote {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.25;
+  }
+  .acm-dust-mote1 { width: 2px; height: 2px; top: 30%; left: 20%; animation: acmMote1 6s infinite ease-in-out; }
+  .acm-dust-mote2 { width: 1.5px; height: 1.5px; top: 65%; left: 65%; animation: acmMote2 8s infinite ease-in-out; }
+  .acm-dust-mote3 { width: 2.5px; height: 2.5px; top: 40%; left: 85%; animation: acmMote1 7s 2s infinite ease-in-out; }
+  @keyframes acmMote1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes acmMote2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+  /* Idle State: Now Showing */
+  .acm-plate-content {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+    padding: 0 22px;
+    white-space: nowrap;
+    max-width: 480px;
+    transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, padding 0.4s ease;
+    overflow: hidden;
+  }
+  .acm-plate-wrapper:hover .acm-plate-content,
+  .acm-plate.is-expanded .acm-plate-content {
+    max-width: 0;
+    opacity: 0;
+    padding: 0;
+  }
+  .acm-scene-number {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    margin-right: 10px;
+  }
+  .acm-now-showing-lbl {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.22em;
+    color: var(--muted-foreground);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  .acm-plate-sep {
+    color: var(--border);
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
+  .acm-section-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--foreground);
+    text-transform: uppercase;
+  }
+  .acm-timecode {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    color: var(--muted-foreground);
+    border-left: 1px solid var(--border);
+    padding-left: 10px;
+    margin-left: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Expanded State: Nav Items */
+  .acm-nav-items-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    border-left: 0 solid transparent;
+    transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease 0.1s, visibility 0.45s, padding 0.45s ease;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .acm-plate-wrapper:hover .acm-nav-items-container,
+  .acm-plate.is-expanded .acm-nav-items-container {
+    max-width: 680px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 12px;
+    pointer-events: auto;
+  }
+  .acm-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+    padding: 0 14px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+  .acm-nav-item + .acm-nav-item {
+    border-left: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  }
+  .acm-nav-item-scene {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.18em;
+    color: color-mix(in oklab, var(--primary) 70%, transparent);
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.2s ease;
+  }
+  .acm-nav-item-label {
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--muted-foreground);
+    line-height: 1;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+  .acm-nav-item:hover .acm-nav-item-label {
+    color: var(--foreground);
+  }
+  .acm-nav-item:hover .acm-nav-item-scene {
+    color: var(--primary);
+  }
+  .acm-nav-item.is-active .acm-nav-item-label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item.is-active .acm-nav-item-scene {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item.is-active:after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+  .acm-nav-item-join .acm-nav-item-label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item-join:hover .acm-nav-item-label {
+    opacity: 0.85;
+  }
+
+  /* Index Dropdown */
+  .acm-index-menu-wrapper {
+    position: relative;
+  }
+  .acm-index-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 160px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: 0 16px 36px -12px rgba(16, 23, 37, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 70;
+  }
+  .acm-index-menu-wrapper:hover .acm-index-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .acm-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .acm-dropdown-item:hover {
+    background: var(--secondary);
+  }
+  .acm-dropdown-scene {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.18em;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .acm-dropdown-label {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .acm-hover-hint {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: transparent;
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+    pointer-events: none;
+    transition: color 0.4s ease;
+  }
+  .acm-plate-wrapper:hover .acm-hover-hint {
+    color: var(--muted-foreground);
+  }
+  .acm-plate.is-expanded + .acm-hover-hint {
+    color: transparent;
+  }
+
+  /* Right Nav Buttons */
+  .acm-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .acm-signin-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    color: var(--foreground);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+  .acm-signin-pill:hover {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+  .acm-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    cursor: pointer;
+  }
+
+  /* Mobile Strip */
+  .acm-mobile-strip {
+    border-top: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 95%, transparent);
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 16px;
+  }
+  .acm-mobile-strip::-webkit-scrollbar { display: none; }
+  .acm-mobile-strip-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .acm-mobile-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--foreground);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .acm-mobile-chip.is-active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .acm-mobile-chip-code {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.625rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-mobile-chip.is-active .acm-mobile-chip-code {
+    color: #fff;
+  }
+  .acm-mobile-chip-cta {
+    background: color-mix(in oklab, var(--primary) 15%, transparent);
+    color: var(--primary);
+    font-weight: 700;
+    border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+
+  /* Utility classes referenced by the markup */
+  .bg-hero-sky{ background-color:var(--hero-sky); }
+  .text-hero-foreground{ color:var(--hero-foreground); }
+  .text-hero-muted{ color:var(--hero-muted); }
+  .border-hero-line{ border-color:var(--hero-line); }
+  .bg-card{ background-color:var(--card); }
+  .bg-ink{ background-color:var(--ink); }
+  .text-ink-foreground{ color:var(--ink-foreground); }
+  .text-reel-foreground{ color:var(--reel-foreground); }
+  .text-reel-muted{ color:var(--reel-muted); }
+  .bg-reel{ background-color:var(--reel); }
+  .text-signal{ color:var(--signal); }
+  .bg-signal{ background-color:var(--signal); }
+  .bg-gold{ background-color:var(--gold); }
+  .border-gold\/60{ border-color: color-mix(in oklab, var(--gold) 60%, transparent); }
+  .bg-mint{ background-color:var(--mint); }
+  .bg-violet{ background-color:var(--violet); }
+
+  /* ========================================================
+     ANIMATED CHECKBOXES (LIGHT THEME SCI-FI / TECH SPEC)
+  ======================================================== */
+  .acm-checkbox-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+  .acm-checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+  .acm-checkbox-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background-color: var(--card);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .acm-checkbox-wrap:hover .acm-checkbox-box {
+    border-color: var(--primary);
+    background-color: color-mix(in oklab, var(--primary) 8%, var(--card));
+  }
+  .acm-checkbox-svg {
+    width: 12px;
+    height: 12px;
+    stroke: #ffffff;
+    stroke-width: 2.8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .acm-checkbox-input:checked + .acm-checkbox-box {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 22%, transparent);
+    transform: scale(1.05);
+  }
+  .acm-checkbox-input:checked + .acm-checkbox-box .acm-checkbox-svg {
+    stroke-dashoffset: 0;
+  }
+  .acm-checkbox-input:focus-visible + .acm-checkbox-box {
+    outline: none;
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+
+  /* Tag pill variant with animated checkbox */
+  .filter-checkbox-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  .filter-checkbox-pill:hover {
+    border-color: var(--primary);
+    background-color: color-mix(in oklab, var(--primary) 6%, var(--card));
+  }
+  .filter-checkbox-pill.active {
+    background-color: var(--foreground);
+    color: var(--background);
+    border-color: var(--foreground);
+  }
+
+  /* ========================================================
+     PROFESSIONAL HIGH-TECH FOOTER SPECIFICATION
+  ======================================================== */
+  .acm-footer {
+    position: relative;
+    background: radial-gradient(130% 120% at 50% 0%, #0b1324 0%, #050811 100%);
+    color: #e2e8f0;
+    border-top: 1px solid rgba(31, 84, 225, 0.45);
+    overflow: hidden;
+  }
+
+  /* Top Animated Laser Hairline with Breathing Pulse */
+  .acm-footer-top-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2.5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(31, 84, 225, 0.6) 20%, #38bdf8 50%, rgba(69, 213, 182, 0.7) 80%, transparent 100%);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.65), 0 0 32px rgba(31, 84, 225, 0.45);
+    animation: acmFooterLaserPulse 3s ease-in-out infinite;
+    z-index: 10;
+  }
+  @keyframes acmFooterLaserPulse {
+    0%, 100% { opacity: 0.6; transform: scaleX(0.98); }
+    50% { opacity: 1; transform: scaleX(1); }
+  }
+
+  /* Zone A: Technical Blueprint & Directory */
+  .acm-footer-zoneA {
+    position: relative;
+    padding: 72px 24px 44px;
+    background-image: 
+      radial-gradient(circle 800px at 12% 15%, rgba(31, 84, 225, 0.18), transparent 70%),
+      radial-gradient(circle 600px at 88% 85%, rgba(69, 213, 182, 0.1), transparent 70%),
+      radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+    background-size: auto, auto, 28px 28px;
+  }
+  .acm-footer-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .acm-footer .text-foreground {
+    color: #f8fafc !important;
+  }
+  .acm-footer .text-muted-foreground {
+    color: #94a3b8 !important;
+  }
+  .acm-footer .border-border {
+    border-color: rgba(255, 255, 255, 0.09) !important;
+  }
+  .acm-footer .bg-secondary\/50,
+  .acm-footer .bg-secondary\/40 {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #cbd5e1 !important;
+  }
+  .footer-badge-pulse {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(69, 213, 182, 0.35);
+    background-color: rgba(69, 213, 182, 0.08);
+    backdrop-filter: blur(8px);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: "Geist Mono", monospace;
+    color: #45d5b6;
+  }
+  .footer-pulse-dot {
+    position: relative;
+    display: flex;
+    height: 8px;
+    width: 8px;
+  }
+  .footer-pulse-dot .ping {
+    position: absolute;
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 9999px;
+    background-color: var(--mint);
+    opacity: 0.75;
+    animation: footerPing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .footer-pulse-dot .dot {
+    position: relative;
+    display: inline-flex;
+    border-radius: 9999px;
+    height: 8px;
+    width: 8px;
+    background-color: var(--mint);
+  }
+  @keyframes footerPing {
+    75%, 100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+  .footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.65rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .footer-social-btn:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(31, 84, 225, 0.45);
+  }
+  .footer-col-head {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #60a5fa;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    padding-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .footer-col-head span {
+    color: #38bdf8;
+  }
+  .footer-nav-link {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+  }
+  .footer-nav-link:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+  }
+  .footer-nav-link:hover .footer-arrow {
+    opacity: 1;
+    transform: translateX(2px);
+    color: #38bdf8;
+  }
+  .footer-arrow {
+    opacity: 0;
+    font-size: 0.75rem;
+    transition: all 0.18s ease;
+  }
+
+  /* ========================================================
+     ABOUT SECTION ANIMATED TECH GRID BACKGROUND (Image 3)
+     ======================================================== */
+  #about {
+    position: relative;
+    background: radial-gradient(circle 900px at 50% 10%, rgba(219, 234, 254, 0.55) 0%, #edf4fd 100%);
+  }
+  .about-grid-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  #about > .concrete-overlay {
+    z-index: 2;
+    opacity: 0.02;
+  }
+  #about > .relative.mx-auto {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ========================================================
+     THUNDER / LIGHTNING CANVAS & EFFECTS
+  ======================================================== */
+  #lightningCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+    display: none;
+  }
+  @keyframes shakeThunder {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    20% { transform: translate(-3px, 2px) scale(1.05); }
+    40% { transform: translate(3px, -2px) scale(1.03); }
+    60% { transform: translate(-2px, -1px) scale(1.06); }
+    80% { transform: translate(2px, 2px) scale(1.04); }
+  }
+  .btn-thunder-strike {
+    animation: shakeThunder 0.45s ease-in-out infinite;
+    box-shadow: 0 0 35px #1f54e1, 0 0 70px #0495d0 !important;
+    border-color: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1f54e1 !important;
+  }
+  .screen-flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 45%, rgba(255,255,255,0.7), transparent 70%);
+    pointer-events: none;
+    z-index: 35;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .screen-flash.active {
+    opacity: 1;
+  }
+
+  /* ========================================================
+     SIGN-IN MODAL (FULL OVERLAY & SMOOTH LIGHT THEME)
+  ======================================================== */
+  #signInModal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background-color: rgba(16, 23, 37, 0.45);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  #signInModal.modal-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  #signInModal .modal-panel {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 30px 60px -25px oklch(0.2 0.03 265 / 0.35);
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  #signInModal.modal-open .modal-panel {
+    transform: translateY(0) scale(1);
+  }
+  .field-input{
+    width:100%; border:1px solid var(--input); background-color:var(--card); color:var(--foreground);
+    border-radius:.6rem; padding:.85rem 1rem; font-size:.95rem; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .field-input:focus{ outline:none; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 18%, transparent); }
+  .field-input::placeholder{ color:var(--muted-foreground); }
+
+  .btn-primary{
+    display:flex; align-items:center; justify-content:center; width:100%;
+    background-color:var(--primary); color:var(--primary-foreground); font-weight:700;
+    border-radius:.6rem; padding:.9rem 1rem; letter-spacing:.02em; transition:opacity .15s ease, transform .15s ease;
+    cursor:pointer;
+  }
+  .btn-primary:hover{ opacity:.92; transform:translateY(-1px); }
+
+  .btn-google{
+    display:flex; align-items:center; justify-content:center; gap:.6rem; width:100%;
+    border:1px solid var(--border); background-color:var(--card); color:var(--foreground); font-weight:600;
+    border-radius:.6rem; padding:.85rem 1rem; transition:background-color .15s ease; cursor:pointer;
+  }
+  .btn-google:hover{ background-color:var(--secondary); }
+
+  .warn-box{
+    display:flex; gap:.75rem; border:1px solid color-mix(in oklab, var(--gold) 55%, var(--border));
+    background-color: color-mix(in oklab, var(--gold) 12%, var(--card));
+    color: color-mix(in oklab, var(--gold) 55%, var(--foreground));
+    border-radius:.6rem; padding:.85rem 1rem; font-size:.85rem; line-height:1.45;
+  }
+
+  /* ========================================================
+     PRELOADER (SSGMCE ACM logo intro)
+  ======================================================== */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  #preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  #preloader .loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #preloader .logo-acm {
+    width: 250px;
+    height: 250px;
+    stroke-width: 6px;
+    stroke-dasharray: 4500;
+    stroke-dashoffset: 4500;
+    animation: acmDraw 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    overflow: visible;
+  }
+  @keyframes acmDraw {
+    0% { stroke-dashoffset: 4500; }
+    100% { stroke-dashoffset: 0; }
+  }
+  #preloader .logo-fill-anim {
+    transition: fill 0.4s ease-in-out;
+  }
+  #preloader .svg-chapter-text {
+    font-family: 'Michroma', sans-serif;
+    font-size: 85px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    fill: none;
+    stroke: #04609f;
+    stroke-width: 4px;
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: acmDraw 2s 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  #preloader .chapter-title {
+    margin-top: 1.5rem;
+    font-family: 'Michroma', sans-serif;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: #04609f;
+    text-align: center;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: acmTextReveal 0.8s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes acmTextReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }

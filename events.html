@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagship Events &amp; Contests — ACM SSGMCE</title>
+<meta name="description" content="Explore DotSlash 2026 hackathons, ICPC algorithmic showdowns, and hands-on developer workshops organized by ACM SSGMCE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: '#edf4fd',
+          foreground: '#101725',
+          card: '#fcfeff',
+          'card-foreground': '#101725',
+          primary: '#1f54e1',
+          'primary-foreground': '#f9fcff',
+          secondary: '#e0e9f4',
+          'secondary-foreground': '#181f2e',
+          muted: '#e0e9f4',
+          'muted-foreground': '#5f6a7b',
+          border: '#cbd5e2',
+          'hero-sky': '#bce9fe',
+          'hero-foreground': '#032137',
+          'hero-muted': '#385971',
+          'hero-line': '#75b1ce',
+          ink: '#05070c',
+          'ink-foreground': '#f1f5fb',
+          signal: '#f12848',
+          mint: '#45d5b6',
+          gold: '#dbb155',
+          violet: '#b27dff'
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          heading: ['"Space Grotesk"', 'sans-serif'],
+          mono: ['"Geist Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="events.css">
+</head>
+<body class="min-h-screen selection:bg-primary selection:text-white">
+
+<!-- Interactive Light Theme Flashing Grid -->
+<div class="grid-bg-container" id="gridBg" aria-hidden="true"></div>
+<div class="grid-glow" aria-hidden="true"></div>
+
+
+<!-- ================= SITE HEADER (ACM NIT SURAT THEMED - LIGHT SPEC) ================= -->
+<header id="siteHeader" class="acm-navbar-header sticky top-0 z-50 w-full transition-all duration-200">
+  <nav class="acm-navbar-nav" aria-label="Main navigation">
+    
+    <!-- Brand Logo -->
+    <a href="index.html" class="acm-brand-block" aria-label="ACM SSGMCE Home">
+      <svg viewBox="0 0 200 200" class="acm-brand-logo-svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="nav-acm-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6"></stop>
+            <stop offset="50%" stop-color="#1f54e1"></stop>
+            <stop offset="100%" stop-color="#103bb0"></stop>
+          </linearGradient>
+        </defs>
+        <path d="M 100,0 L 200,100 L 100,200 L 0,100 Z" fill="url(#nav-acm-gradient)"></path>
+        <circle cx="100" cy="100" r="58" fill="none" stroke="#ffffff" stroke-width="6"></circle>
+        <text x="100" y="108" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">acm</text>
+        <text x="100" y="130" font-family="'Geist Mono', monospace" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">SSGMCE</text>
+      </svg>
+      <div class="acm-brand-text">
+        <span class="acm-brand-name">ACM</span>
+        <span class="acm-brand-sub">SSGMCE SHEGAON</span>
+      </div>
+    </a>
+
+    <!-- Center Expandable Plate -->
+    <div class="acm-plate-wrapper" id="navPlateWrapper">
+      <div class="acm-plate" id="navPlate" role="navigation" aria-label="Scene indicator">
+        <div class="acm-plate-background">
+          <div class="acm-reg-mark acm-reg-left" aria-hidden="true">+</div>
+          <div class="acm-reg-mark acm-reg-right" aria-hidden="true">+</div>
+          <div class="acm-plate-ambient-sweep" aria-hidden="true"></div>
+          <div class="acm-plate-dust">
+            <span class="acm-dust-mote acm-dust-mote1"></span>
+            <span class="acm-dust-mote acm-dust-mote2"></span>
+            <span class="acm-dust-mote acm-dust-mote3"></span>
+          </div>
+        </div>
+
+        <!-- Idle Content: NOW SHOWING -->
+        <div class="acm-plate-content" id="plateContent">
+          <span class="acm-scene-number" id="plateSceneNum">SC.03</span>
+          <span class="acm-now-showing-lbl">NOW SHOWING</span>
+          <span class="acm-plate-sep">—</span>
+          <span class="acm-section-name" id="plateSectionName">EVENTS HUB</span>
+          <span class="acm-timecode" id="plateTimecode">00:00:01</span>
+        </div>
+
+        <!-- Expanded Nav Items -->
+        <div class="acm-nav-items-container" id="plateNavItems">
+          <a class="acm-nav-item is-active" href="events.html">
+            <span class="acm-nav-item-scene">SC.03</span>
+            <span class="acm-nav-item-label">Events</span>
+          </a>
+          <a class="acm-nav-item" href="leaderboard.html">
+            <span class="acm-nav-item-scene">SC.04</span>
+            <span class="acm-nav-item-label">Leaderboard</span>
+          </a>
+          <a class="acm-nav-item" href="projects.html">
+            <span class="acm-nav-item-scene">SC.05</span>
+            <span class="acm-nav-item-label">Projects</span>
+          </a>
+          <a class="acm-nav-item" href="blog.html">
+            <span class="acm-nav-item-scene">SC.06</span>
+            <span class="acm-nav-item-label">Blogs</span>
+          </a>
+
+          <!-- Index Menu Dropdown: TEAM REMOVED ON SUBPAGE -->
+          <div class="acm-nav-item acm-index-menu-wrapper">
+            <span class="acm-nav-item-scene">MENU</span>
+            <span class="acm-nav-item-label">INDEX +</span>
+            <div class="acm-index-dropdown">
+              <a class="acm-dropdown-item" href="index.html#hero">
+                <span class="acm-dropdown-scene">SC.01</span>
+                <span class="acm-dropdown-label">Hero</span>
+              </a>
+              <a class="acm-dropdown-item" href="index.html#about">
+                <span class="acm-dropdown-scene">SC.02</span>
+                <span class="acm-dropdown-label">About</span>
+              </a>
+            </div>
+          </div>
+
+          <a class="acm-nav-item acm-nav-item-join" href="index.html#join">
+            <span class="acm-nav-item-scene">↗</span>
+            <span class="acm-nav-item-label">Join Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right CTAs -->
+    <div class="acm-nav-right">
+      <button type="button" class="acm-signin-pill hidden sm:inline-flex" id="openSignInBtn">
+        Sign In
+      </button>
+      <button type="button" id="mobileMenuToggle" class="acm-mobile-toggle lg:hidden" aria-label="Toggle navigation" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Scene Strip: TEAM REMOVED ON SUBPAGE -->
+  <div class="acm-mobile-strip lg:hidden" id="mobileStrip">
+    <div class="acm-mobile-strip-inner">
+      <a href="index.html#hero" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.01</span><span>Home</span></a>
+      <a href="index.html#about" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.02</span><span>About</span></a>
+      <a href="events.html" class="acm-mobile-chip is-active"><span class="acm-mobile-chip-code">SC.03</span><span>Events</span></a>
+      <a href="leaderboard.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.04</span><span>Leaderboard</span></a>
+      <a href="projects.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.05</span><span>Projects</span></a>
+      <a href="blog.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.06</span><span>Blogs</span></a>
+      <button type="button" class="acm-mobile-chip acm-mobile-chip-cta" id="mobileOpenSignInBtn"><span>Sign In</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="py-12 sm:py-16">
+  <div class="mx-auto w-full max-w-[1360px] px-4 sm:px-6">
+    
+    <!-- Hero Banner -->
+    <div class="relative overflow-hidden rounded-3xl border border-border bg-card p-8 sm:p-12 shadow-sm">
+      <div class="grain-overlay"></div>
+      <div class="relative z-10 max-w-4xl">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-signal/15 px-3 py-1 text-[11px] font-semibold text-signal label-mono">
+            <span class="h-2 w-2 rounded-full bg-signal animate-pulse"></span>
+            Spring 2026 Season Live
+          </span>
+          <span class="label-mono text-[11px] text-muted-foreground border border-border px-3 py-1 rounded-full">
+            SSGMCE Central India Hub
+          </span>
+        </div>
+
+        <h1 class="mt-5 font-heading text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-[1.08]">
+          Flagship Events &amp; Hackathons
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          Where algorithms battle for ICPC qualifications and teams build production-grade prototypes under 36 hours. Explore our seasonal competitive arena, workshops, and flagship legacy hackathons.
+        </p>
+
+        <!-- Metric Stat Counters -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-border/80 pt-6">
+          <div class="p-3">
+            <p class="label-mono text-[10px] text-muted-foreground">National Hackathon</p>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-primary mt-1">36 Hours</p>
+          </div>
+          <div class="p-3">
+            <p class="label-mono text-[10px] text-muted-foreground">Prize Pool</p>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-mint mt-1">₹2,50,000+</p>
+          </div>
+          <div class="p-3">
+            <p class="label-mono text-[10px] text-muted-foreground">Annual Participants</p>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-foreground mt-1">2,800+</p>
+          </div>
+          <div class="p-3">
+            <p class="label-mono text-[10px] text-muted-foreground">Workshops &amp; Camps</p>
+            <p class="font-heading text-2xl sm:text-3xl font-bold text-gold mt-1">12 Editions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= FEATURED SPOTLIGHT: DOTSLASH 2026 ================= -->
+    <div class="mt-12">
+      <div class="flex items-center justify-between mb-4">
+        <p class="label-mono text-primary flex items-center gap-2 font-bold">
+          <span class="h-2 w-2 rounded-full bg-primary"></span>
+          Flagship Showcase Event
+        </p>
+        <span class="label-mono text-[11px] text-muted-foreground">Edition 8.0 • March 2026</span>
+      </div>
+
+      <div class="relative overflow-hidden rounded-3xl bg-ink text-ink-foreground p-8 sm:p-12 shadow-xl border border-primary/30">
+        <div class="grain-overlay"></div>
+        
+        <div class="relative z-10 grid gap-10 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-signal/20 px-3 py-1 label-mono text-[10px] font-bold text-signal border border-signal/30">
+                National 36-Hour Hackathon
+              </span>
+              <span class="rounded-full bg-white/10 px-3 py-1 label-mono text-[10px] text-ink-foreground/80">
+                SSGMCE Campus &amp; Online Hybrid
+              </span>
+            </div>
+
+            <h2 class="mt-5 font-heading text-3xl sm:text-5xl font-black tracking-tight text-white">
+              DotSlash 2026: Root to Ideas
+            </h2>
+
+            <p class="mt-4 text-sm sm:text-base text-ink-foreground/80 leading-relaxed max-w-2xl">
+              Central India's premier student-run hackathon bringing together the brightest developers, designers, and system architects. Build groundbreaking solutions in Generative AI, Decentralized Finance, Hardware &amp; Embedded IoT, and Open Humanitarian Systems.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-2 text-xs">
+              <span class="rounded-lg bg-white/5 px-3 py-1.5 border border-white/10 text-white/90">🏆 ₹1,50,000 Cash Pool</span>
+              <span class="rounded-lg bg-white/5 px-3 py-1.5 border border-white/10 text-white/90">💼 Direct Sponsor Interviews</span>
+              <span class="rounded-lg bg-white/5 px-3 py-1.5 border border-white/10 text-white/90">☁️ $100 AWS Cloud Credits</span>
+              <span class="rounded-lg bg-white/5 px-3 py-1.5 border border-white/10 text-white/90">⚡ Digital FabLab Kits</span>
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <button type="button" onclick="openRegModal('DotSlash 2026: Root to Ideas')" class="rounded-xl bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                Register Your Team →
+              </button>
+              <a href="#eventsGrid" class="rounded-xl border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">
+                View All Events
+              </a>
+            </div>
+          </div>
+
+          <!-- Countdown Timer & Schedule Box -->
+          <div class="lg:col-span-5 rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-md">
+            <p class="label-mono text-[10px] text-ink-foreground/60 text-center tracking-widest">HACKATHON COMMENCES IN</p>
+            
+            <div class="mt-4 grid grid-cols-4 gap-2 text-center" id="countdownGrid">
+              <div class="rounded-xl bg-white/10 p-3">
+                <span class="font-heading text-2xl sm:text-3xl font-black text-white" id="countDays">14</span>
+                <span class="label-mono block text-[9px] text-white/60 mt-1">Days</span>
+              </div>
+              <div class="rounded-xl bg-white/10 p-3">
+                <span class="font-heading text-2xl sm:text-3xl font-black text-white" id="countHours">08</span>
+                <span class="label-mono block text-[9px] text-white/60 mt-1">Hours</span>
+              </div>
+              <div class="rounded-xl bg-white/10 p-3">
+                <span class="font-heading text-2xl sm:text-3xl font-black text-white" id="countMin">42</span>
+                <span class="label-mono block text-[9px] text-white/60 mt-1">Mins</span>
+              </div>
+              <div class="rounded-xl bg-white/10 p-3">
+                <span class="font-heading text-2xl sm:text-3xl font-black text-mint" id="countSec">18</span>
+                <span class="label-mono block text-[9px] text-white/60 mt-1">Secs</span>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-3 border-t border-white/10 pt-4 text-xs">
+              <div class="flex items-center justify-between text-ink-foreground/80">
+                <span class="text-white/60">Dates</span>
+                <span class="font-semibold text-white">March 27 – 29, 2026</span>
+              </div>
+              <div class="flex items-center justify-between text-ink-foreground/80">
+                <span class="text-white/60">Team Size</span>
+                <span class="font-semibold text-white">2 to 4 Members</span>
+              </div>
+              <div class="flex items-center justify-between text-ink-foreground/80">
+                <span class="text-white/60">Venue</span>
+                <span class="font-semibold text-white">FabLab Complex, SSGMCE</span>
+              </div>
+              <div class="flex items-center justify-between text-ink-foreground/80">
+                <span class="text-white/60">Eligibility</span>
+                <span class="font-semibold text-mint">All University Students</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= SEARCH & INTERACTIVE FILTER BAR ================= -->
+    <div class="mt-14 p-6 sm:p-8 rounded-2xl border border-border bg-card shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        
+        <!-- Live Search Input -->
+        <div class="relative flex-1 max-w-md">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </span>
+          <input type="text" id="eventSearchInput" placeholder="Search hackathons, algorithmic contests, bootcamps..." class="w-full rounded-xl border border-border bg-background py-3 pl-10 pr-4 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all">
+        </div>
+
+        <!-- Season Status Switcher -->
+        <div class="flex items-center gap-2 bg-secondary/60 p-1 rounded-xl self-start md:self-auto text-xs font-semibold">
+          <button type="button" class="status-tab px-4 py-2 rounded-lg bg-card text-foreground shadow-sm transition-all" data-status="all">All Events</button>
+          <button type="button" class="status-tab px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground transition-all" data-status="upcoming">Upcoming</button>
+          <button type="button" class="status-tab px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground transition-all" data-status="past">Past Editions</button>
+        </div>
+
+      </div>
+
+      <!-- Animated Category Checkboxes -->
+      <div class="mt-6 pt-5 border-t border-border flex flex-wrap items-center gap-6">
+        <span class="label-mono text-[10px] text-muted-foreground">Categories:</span>
+
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input filter-category-cb" value="all" checked>
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs font-semibold text-foreground">Show All</span>
+        </label>
+
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input filter-category-cb" value="hackathon">
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs font-semibold flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-signal"></span> Hackathons</span>
+        </label>
+
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input filter-category-cb" value="cp">
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs font-semibold flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-primary"></span> CP &amp; ICPC</span>
+        </label>
+
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input filter-category-cb" value="ai">
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs font-semibold flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-violet"></span> AI &amp; Systems</span>
+        </label>
+
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input filter-category-cb" value="fablab">
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs font-semibold flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-mint"></span> FabLab Hardware</span>
+        </label>
+      </div>
+
+    </div>
+
+    <!-- ================= EVENTS DIRECTORY GRID ================= -->
+    <div class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="eventsGrid">
+      
+      <!-- Event 1: Inception & Epiphany ICPC Showdown -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50" data-category="cp" data-status="upcoming">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-primary font-bold bg-primary/15 px-2.5 py-1 rounded-full border border-primary/25">
+              CP Contest • ICPC Rules
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">April 12, 2026</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            Inception &amp; Epiphany 2026
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            SSGMCE's official ICPC qualifiers contest. 5 hours, 10 complex algorithmic challenges curated by ACM Candidate Masters. Ranked globally on Codeforces Gym.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-foreground font-mono">Codeforces Engine</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-gold font-semibold">₹35,000 Prizes</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">Teams of 3</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-mint font-semibold flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-mint"></span> Registrations Open
+          </span>
+          <button type="button" onclick="openRegModal('Inception & Epiphany 2026')" class="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white hover:bg-primary/90 transition-colors">
+            Register →
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 2: Agentic AI Systems Bootcamp -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50" data-category="ai" data-status="upcoming">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-violet font-bold bg-violet/15 px-2.5 py-1 rounded-full border border-violet/25">
+              AI Masterclass • 2 Days
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">May 02 – 03, 2026</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            Agentic AI &amp; Multi-Agent Systems
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            Hands-on weekend sprint on constructing self-directed AI agents using LangGraph, Gemini 2.5 Flash, function calling, vector embeddings, and autonomous evaluation harnesses.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-foreground font-mono">PyTorch / Gemini API</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-primary font-semibold">SSGMCE Auditorium</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">Free for Students</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-mint font-semibold flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-mint"></span> 120 Seats Left
+          </span>
+          <button type="button" onclick="openRegModal('Agentic AI & Multi-Agent Systems')" class="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white hover:bg-primary/90 transition-colors">
+            Reserve Seat →
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 3: FabLab Hardware Sprint -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50" data-category="fablab" data-status="upcoming">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-mint font-bold bg-mint/15 px-2.5 py-1 rounded-full border border-mint/25">
+              FabLab Sprint • 24h
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">May 16, 2026</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            Embedded IoT &amp; Robotics Sprint
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            Transform schematics into functional hardware prototypes. Fast-track PCB milling, ESP32 FreeRTOS programming, edge sensor telemetries, and 3D printing in the Digital FabLab.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-foreground font-mono">ESP32 / KiCAD / MQTT</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-gold font-semibold">Kits Provided</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">Digital FabLab</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-mint font-semibold flex items-center gap-1.5">
+            <span class="h-1.5 w-1.5 rounded-full bg-mint"></span> Lab Access Included
+          </span>
+          <button type="button" onclick="openRegModal('Embedded IoT & Robotics Sprint')" class="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white hover:bg-primary/90 transition-colors">
+            Register →
+          </button>
+        </div>
+      </article>
+
+      <!-- Event 4: Winter Code Camp (Past Edition) -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50 opacity-90" data-category="cp" data-status="past">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-muted-foreground font-bold bg-secondary px-2.5 py-1 rounded-full">
+              Bootcamp Archive
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">Dec 2025</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            Winter Code Camp: 0 to Candidate Master
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            7-day intensive boot camp covering advanced dynamic programming, segment trees, computational geometry, and game theory with ICPC problem sets.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-foreground font-mono">C++ / Algorithms</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">180+ Attendees</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-muted-foreground font-semibold">Completed</span>
+          <a href="blog.html" class="rounded-lg border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary transition-colors">
+            Read Editorial →
+          </a>
+        </div>
+      </article>
+
+      <!-- Event 5: DotSlash 2025 (Past Edition) -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50 opacity-90" data-category="hackathon" data-status="past">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-muted-foreground font-bold bg-secondary px-2.5 py-1 rounded-full">
+              Hackathon Archive
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">March 2025</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            DotSlash 2025 (Edition 7.0)
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            Over 2,100 participants nationwide created 140+ functional software &amp; hardware prototypes across healthcare, smart agriculture, and Web3 infra.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-gold font-semibold">₹1,20,000 Awarded</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">32 Mentors</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-muted-foreground font-semibold">Completed</span>
+          <a href="projects.html" class="rounded-lg border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary transition-colors">
+            View Winners →
+          </a>
+        </div>
+      </article>
+
+      <!-- Event 6: CodeIgnite Freshman Tournament -->
+      <article class="event-card group relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg hover:border-primary/50 opacity-90" data-category="cp" data-status="past">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="label-mono text-[10px] text-muted-foreground font-bold bg-secondary px-2.5 py-1 rounded-full">
+              Tournament Archive
+            </span>
+            <span class="label-mono text-[10px] text-muted-foreground">Oct 2025</span>
+          </div>
+
+          <h3 class="mt-5 font-heading text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+            CodeIgnite Freshman Contest
+          </h3>
+
+          <p class="mt-3 text-xs text-muted-foreground leading-relaxed">
+            Beginner-friendly algorithmic showdown designed specifically for 1st and 2nd-year SSGMCE engineers to kickstart their competitive coding journey.
+          </p>
+
+          <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-foreground font-mono">Python / C++</span>
+            <span class="rounded-md bg-secondary px-2.5 py-1 text-muted-foreground">220 Coders</span>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-border pt-4 flex items-center justify-between">
+          <span class="label-mono text-[10px] text-muted-foreground font-semibold">Completed</span>
+          <a href="leaderboard.html" class="rounded-lg border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground hover:bg-secondary transition-colors">
+            Standings →
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Empty State Container -->
+    <div id="noEventsFound" class="hidden my-16 text-center py-12 rounded-2xl border border-dashed border-border bg-card">
+      <p class="font-heading text-lg font-bold text-foreground">No events match your criteria</p>
+      <p class="mt-2 text-sm text-muted-foreground">Try adjusting your search query or enabling different category filters above.</p>
+      <button type="button" onclick="resetFilters()" class="mt-4 rounded-lg bg-secondary px-4 py-2 text-xs font-semibold text-primary hover:bg-secondary/80">
+        Reset All Filters
+      </button>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= REGISTRATION MODAL ================= -->
+<div id="eventRegModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalEventTitle">
+  <div class="modal-box relative">
+    <button type="button" onclick="closeRegModal()" class="absolute top-5 right-5 text-muted-foreground hover:text-foreground p-1 rounded-md transition-colors" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <span class="label-mono text-[10px] text-primary font-bold">Fast-Track Registration</span>
+    <h3 id="modalEventTitle" class="mt-1 font-heading text-2xl font-bold text-foreground">Register Team</h3>
+    <p class="mt-1 text-xs text-muted-foreground">Please use your SSGMCE institutional email ID or verified student credentials.</p>
+
+    <form class="mt-6 space-y-4" onsubmit="handleEventReg(event)">
+      <div>
+        <label class="label-mono block text-muted-foreground text-[10px]">Team / Participant Name</label>
+        <input type="text" required placeholder="e.g. Algorithmic Titans" class="mt-1.5 w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+      </div>
+
+      <div>
+        <label class="label-mono block text-muted-foreground text-[10px]">Lead Institutional Email</label>
+        <input type="email" required placeholder="rollnumber@dept.ssgmce.ac.in" class="mt-1.5 w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="label-mono block text-muted-foreground text-[10px]">Team Size</label>
+          <select class="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none">
+            <option>1 (Individual)</option>
+            <option>2 Members</option>
+            <option selected>3 Members</option>
+            <option>4 Members (Max)</option>
+          </select>
+        </div>
+        <div>
+          <label class="label-mono block text-muted-foreground text-[10px]">Academic Year</label>
+          <select class="mt-1.5 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none">
+            <option>First Year (FE)</option>
+            <option selected>Second Year (SE)</option>
+            <option>Third Year (TE)</option>
+            <option>Final Year (BE)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="label-mono block text-muted-foreground text-[10px]">GitHub / Codeforces / Portfolio Link</label>
+        <input type="url" placeholder="https://github.com/yourhandle" class="mt-1.5 w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20">
+      </div>
+
+      <div class="pt-2">
+        <button type="submit" id="regSubmitBtn" class="w-full rounded-xl bg-primary py-3 text-sm font-bold text-white shadow-md hover:bg-primary/90 transition-all">
+          Confirm Registration →
+        </button>
+      </div>
+
+      <p id="regSuccessMsg" class="hidden mt-3 text-xs text-mint font-semibold text-center">✓ Application confirmed! Verification link dispatched to your email.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ================= MINIMAL FOOTER ================= -->
+<footer class="w-full border-t border-border bg-card/90 py-7 text-center relative z-10">
+  <p class="label-mono text-[11px] text-muted-foreground tracking-[0.18em]">
+    © 2026 ACM SSGMCE. BUILDING TECHNOLOGY. BUILDING PEOPLE.
+  </p>
+</footer>
+
+<!-- JavaScript Logic -->
+
+<!-- ================= INJECTED: INTEGRATED SIGN IN MODAL ================= -->
+<!-- ================= INTEGRATED SIGN IN MODAL ================= -->
+<div id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+  <div class="modal-panel">
+    
+    <!-- Close Button -->
+    <button type="button" id="closeSignInBtn" class="absolute top-5 right-5 text-muted-foreground hover:text-foreground p-1 rounded-md transition-colors" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <div class="flex justify-center">
+      <span class="float-soft flex h-14 w-14 items-center justify-center rounded-2xl text-base font-heading font-black text-white shadow-lg" style="background:linear-gradient(135deg,#1f54e1,#4a7bf7)">acm</span>
+    </div>
+
+    <h2 id="signInTitle" class="mt-4 text-center font-heading text-2xl font-bold tracking-tight">Sign In</h2>
+    <p class="mt-1 text-center text-sm text-muted-foreground">
+      Don't have an account? <a href="signin.html" class="font-semibold text-primary underline underline-offset-2">Register</a>
+    </p>
+
+    <div class="warn-box mt-5">
+      <span aria-hidden="true" class="text-base">⚠</span>
+      <span>Public sign in is currently disabled. You must use your SSGMCE institutional email ID.</span>
+    </div>
+
+    <form class="mt-5 space-y-4" onsubmit="handleModalSignIn(event);">
+      <div>
+        <label class="label-mono block text-muted-foreground">Institutional Email</label>
+        <input type="email" id="modalEmail" required class="field-input mt-1.5" placeholder="rollnum@deptcode.ssgmce.ac.in">
+        <p class="mt-1 text-[11px] text-muted-foreground">* Please use your official SSGMCE institute email ID</p>
+      </div>
+      <div>
+        <div class="flex items-center justify-between">
+          <label class="label-mono text-muted-foreground">Password</label>
+          <a href="#" class="label-mono text-primary text-[10px] hover:underline">Forgot Password?</a>
+        </div>
+        <div class="relative mt-1.5">
+          <input id="modalPwField" type="password" required class="field-input pr-12" placeholder="••••••••">
+          <button type="button" id="modalPwToggle" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground" aria-label="Toggle password visibility">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Animated Checkbox inside modal -->
+      <div class="pt-1">
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input" checked>
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs text-muted-foreground">Remember my institutional session on this device</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary mt-2" id="modalSubmitBtn">SIGN IN</button>
+    </form>
+
+    <div class="mt-6 flex items-center gap-3 text-xs text-muted-foreground">
+      <span class="h-px flex-1 bg-border"></span>
+      <span class="label-mono text-[10px]">or continue with</span>
+      <span class="h-px flex-1 bg-border"></span>
+    </div>
+
+    <button type="button" class="btn-google mt-4" onclick="handleGoogleSignIn()">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.2 2.8-2.5 3.6v3h4C22.3 19 23.5 16 23.5 12.3z"></path><path fill="#34A853" d="M12 24c3.2 0 6-1 8-2.9l-4-3c-1.1.8-2.5 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.3v3.1C3.3 21.3 7.3 24 12 24z"></path><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.6.4-2.4V6.5H1.3C.5 8.1 0 10 0 12s.5 3.9 1.3 5.5l4.1-3.1z"></path><path fill="#EA4335" d="M12 4.7c1.8 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.5l4.1 3.1C6.3 6.8 8.9 4.7 12 4.7z"></path></svg>
+      Continue with Google Workspace
+    </button>
+
+    <div class="mt-4 text-center">
+      <a href="signin.html" class="label-mono text-[10px] text-muted-foreground hover:text-primary transition-colors">
+        Open Standalone Sign In Page ↗
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="events.js" defer></script>
+</body>
+</html>

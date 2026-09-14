@@ -1,0 +1,667 @@
+  :root{
+    --background:#edf4fd; --foreground:#101725; --card:#fcfeff; --primary:#1f54e1;
+    --border:#cbd5e2; --mint:#45d5b6; --gold:#dbb155;
+  }
+  body{ font-family: Inter, sans-serif; background:var(--background); color:var(--foreground); }
+  h1,h2,h3,h4{ font-family:"Space Grotesk", sans-serif; }
+  .label-mono{ font-family:"Geist Mono", monospace; letter-spacing:.22em; text-transform:uppercase; font-size:.6875rem; }
+
+  /* Animated Checkbox Component */
+  .acm-checkbox-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+  .acm-checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+  .acm-checkbox-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background-color: var(--card);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  .acm-checkbox-wrap:hover .acm-checkbox-box {
+    border-color: var(--primary);
+    background-color: color-mix(in oklab, var(--primary) 8%, var(--card));
+  }
+  .acm-checkbox-svg {
+    width: 12px;
+    height: 12px;
+    stroke: #ffffff;
+    stroke-width: 2.8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    transition: stroke-dashoffset 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .acm-checkbox-input:checked + .acm-checkbox-box {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 22%, transparent);
+    transform: scale(1.05);
+  }
+  .acm-checkbox-input:checked + .acm-checkbox-box .acm-checkbox-svg {
+    stroke-dashoffset: 0;
+  }
+
+  /* ========================================================
+     ACM NIT SURAT LIGHT THEMED EXPANDABLE PLATE NAVBAR
+  ======================================================== */
+  .acm-navbar-header {
+    pointer-events: none;
+    width: 100%;
+    padding: 16px 0;
+    transition: padding 0.35s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .acm-navbar-header.scrolled {
+    padding: 10px 0;
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border);
+  }
+  .acm-navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    pointer-events: auto;
+  }
+
+  /* Brand Block */
+  .acm-brand-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 16px 6px 8px;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 95%, transparent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    text-decoration: none;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .acm-brand-block:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 16px rgba(31, 84, 225, 0.12);
+    transform: translateY(-1px);
+  }
+  .acm-brand-logo-svg {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  .acm-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .acm-brand-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--foreground);
+    letter-spacing: 0.02em;
+  }
+  .acm-brand-sub {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+  }
+  .acm-brand-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 2px;
+  }
+  .acm-fablab-pill {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--primary) 10%, transparent);
+    color: var(--primary);
+    font-weight: 700;
+    border: 1px solid color-mix(in oklab, var(--primary) 25%, transparent);
+  }
+
+  /* Center Interactive Plate */
+  .acm-plate-wrapper {
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  @media (min-width: 1024px) {
+    .acm-plate-wrapper {
+      display: flex;
+    }
+  }
+  .acm-plate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in oklab, var(--primary) 28%, var(--border));
+    background: repeating-linear-gradient(115deg, transparent 0 2px, rgba(31, 84, 225, 0.015) 2px 4px),
+                color-mix(in oklab, var(--card) 96%, transparent);
+    box-shadow: 0 2px 14px rgba(31, 84, 225, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    cursor: default;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+  }
+  .acm-plate-wrapper:hover .acm-plate,
+  .acm-plate.is-expanded {
+    border-color: var(--primary);
+    box-shadow: 0 4px 22px rgba(31, 84, 225, 0.16), 0 0 10px rgba(31, 84, 225, 0.1);
+  }
+  .acm-plate:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 6%;
+    right: 6%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(31,84,225,0.4) 20%, #1f54e1 50%, rgba(31,84,225,0.4) 80%, transparent 100%);
+    animation: acmPlateLaser 3.5s ease-in-out infinite;
+  }
+  @keyframes acmPlateLaser {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.95; }
+  }
+  .acm-plate-background {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .acm-reg-mark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Geist Mono", monospace;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--primary);
+    opacity: 0.35;
+    user-select: none;
+  }
+  .acm-reg-left { left: 6px; }
+  .acm-reg-right { right: 6px; }
+
+  .acm-plate-ambient-sweep {
+    position: absolute;
+    top: 0;
+    left: -80px;
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(31, 84, 225, 0.08) 50%, transparent 100%);
+    animation: acmPlateSweep 8s ease-in-out infinite;
+  }
+  @keyframes acmPlateSweep {
+    0%, 80%, 100% { transform: translateX(0); opacity: 0; }
+    25% { opacity: 1; }
+    50% { transform: translateX(500px); opacity: 0; }
+  }
+
+  .acm-plate-dust {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .acm-dust-mote {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0.25;
+  }
+  .acm-dust-mote1 { width: 2px; height: 2px; top: 30%; left: 20%; animation: acmMote1 6s infinite ease-in-out; }
+  .acm-dust-mote2 { width: 1.5px; height: 1.5px; top: 65%; left: 65%; animation: acmMote2 8s infinite ease-in-out; }
+  .acm-dust-mote3 { width: 2.5px; height: 2.5px; top: 40%; left: 85%; animation: acmMote1 7s 2s infinite ease-in-out; }
+  @keyframes acmMote1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes acmMote2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+  /* Idle State: Now Showing */
+  .acm-plate-content {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 100%;
+    padding: 0 22px;
+    white-space: nowrap;
+    max-width: 480px;
+    transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, padding 0.4s ease;
+    overflow: hidden;
+  }
+  .acm-plate-wrapper:hover .acm-plate-content,
+  .acm-plate.is-expanded .acm-plate-content {
+    max-width: 0;
+    opacity: 0;
+    padding: 0;
+  }
+  .acm-scene-number {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    margin-right: 10px;
+  }
+  .acm-now-showing-lbl {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.22em;
+    color: var(--muted-foreground);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  .acm-plate-sep {
+    color: var(--border);
+    margin-right: 8px;
+    font-size: 0.75rem;
+  }
+  .acm-section-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--foreground);
+    text-transform: uppercase;
+  }
+  .acm-timecode {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    color: var(--muted-foreground);
+    border-left: 1px solid var(--border);
+    padding-left: 10px;
+    margin-left: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Expanded State: Nav Items */
+  .acm-nav-items-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0;
+    border-left: 0 solid transparent;
+    transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease 0.1s, visibility 0.45s, padding 0.45s ease;
+    overflow: visible;
+    pointer-events: none;
+  }
+  .acm-plate-wrapper:hover .acm-nav-items-container,
+  .acm-plate.is-expanded .acm-nav-items-container {
+    max-width: 680px;
+    opacity: 1;
+    visibility: visible;
+    padding: 0 12px;
+    pointer-events: auto;
+  }
+  .acm-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 100%;
+    padding: 0 14px;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+  .acm-nav-item + .acm-nav-item {
+    border-left: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  }
+  .acm-nav-item-scene {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.18em;
+    color: color-mix(in oklab, var(--primary) 70%, transparent);
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.2s ease;
+  }
+  .acm-nav-item-label {
+    font-family: "Space Grotesk", Inter, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--muted-foreground);
+    line-height: 1;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+  .acm-nav-item:hover .acm-nav-item-label {
+    color: var(--foreground);
+  }
+  .acm-nav-item:hover .acm-nav-item-scene {
+    color: var(--primary);
+  }
+  .acm-nav-item.is-active .acm-nav-item-label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item.is-active .acm-nav-item-scene {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item.is-active:after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+  .acm-nav-item-join .acm-nav-item-label {
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-nav-item-join:hover .acm-nav-item-label {
+    opacity: 0.85;
+  }
+
+  /* Index Dropdown */
+  .acm-index-menu-wrapper {
+    position: relative;
+  }
+  .acm-index-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 160px;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    box-shadow: 0 16px 36px -12px rgba(16, 23, 37, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 70;
+  }
+  .acm-index-menu-wrapper:hover .acm-index-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  .acm-dropdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+  .acm-dropdown-item:hover {
+    background: var(--secondary);
+  }
+  .acm-dropdown-scene {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.18em;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .acm-dropdown-label {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .acm-hover-hint {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.5625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: transparent;
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+    pointer-events: none;
+    transition: color 0.4s ease;
+  }
+  .acm-plate-wrapper:hover .acm-hover-hint {
+    color: var(--muted-foreground);
+  }
+  .acm-plate.is-expanded + .acm-hover-hint {
+    color: transparent;
+  }
+
+  /* Right Nav Buttons */
+  .acm-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .acm-signin-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    color: var(--foreground);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.55rem 1.15rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+  .acm-signin-pill:hover {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+  }
+  .acm-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    cursor: pointer;
+  }
+
+  /* Mobile Strip */
+  .acm-mobile-strip {
+    border-top: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 95%, transparent);
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 16px;
+  }
+  .acm-mobile-strip::-webkit-scrollbar { display: none; }
+  .acm-mobile-strip-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .acm-mobile-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--foreground);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .acm-mobile-chip.is-active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+  .acm-mobile-chip-code {
+    font-family: "Geist Mono", monospace;
+    font-size: 0.625rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  .acm-mobile-chip.is-active .acm-mobile-chip-code {
+    color: #fff;
+  }
+  .acm-mobile-chip-cta {
+    background: color-mix(in oklab, var(--primary) 15%, transparent);
+    color: var(--primary);
+    font-weight: 700;
+    border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+
+  
+
+  /* Interactive Flashing Grid Background (Light Theme Edition) */
+  .grid-bg-container{
+    position: fixed; inset: 0; z-index: -1;
+    background-color: var(--background);
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+    background-size: 54px 54px;
+    background-position: -1px -1px;
+    overflow: hidden;
+  }
+  .grid-glow{
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(70% 50% at 50% 15%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 75%);
+  }
+
+  /* Traveling data pulse simulation */
+  .grid-cell-flash{
+    position: absolute;
+    width: 54px; height: 54px;
+    background-color: color-mix(in oklab, var(--primary) 16%, transparent);
+    border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+  }
+  .grid-cell-flash.flash-active{
+    opacity: 1;
+    transition: none;
+  }
+
+  /* ================= INJECTED: SIGN-IN MODAL STYLES ================= */
+  @keyframes float-soft{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  .float-soft{ animation: float-soft 7s ease-in-out infinite; }
+  /* ========================================================
+     SIGN-IN MODAL (FULL OVERLAY & SMOOTH LIGHT THEME)
+  ======================================================== */
+  #signInModal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background-color: rgba(16, 23, 37, 0.45);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  #signInModal.modal-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  #signInModal .modal-panel {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 30px 60px -25px oklch(0.2 0.03 265 / 0.35);
+    transform: translateY(18px) scale(0.97);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  #signInModal.modal-open .modal-panel {
+    transform: translateY(0) scale(1);
+  }
+  .field-input{
+    width:100%; border:1px solid var(--input); background-color:var(--card); color:var(--foreground);
+    border-radius:.6rem; padding:.85rem 1rem; font-size:.95rem; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .field-input:focus{ outline:none; border-color:var(--ring); box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 18%, transparent); }
+  .field-input::placeholder{ color:var(--muted-foreground); }
+
+  .btn-primary{
+    display:flex; align-items:center; justify-content:center; width:100%;
+    background-color:var(--primary); color:var(--primary-foreground); font-weight:700;
+    border-radius:.6rem; padding:.9rem 1rem; letter-spacing:.02em; transition:opacity .15s ease, transform .15s ease;
+    cursor:pointer;
+  }
+  .btn-primary:hover{ opacity:.92; transform:translateY(-1px); }
+
+  .btn-google{
+    display:flex; align-items:center; justify-content:center; gap:.6rem; width:100%;
+    border:1px solid var(--border); background-color:var(--card); color:var(--foreground); font-weight:600;
+    border-radius:.6rem; padding:.85rem 1rem; transition:background-color .15s ease; cursor:pointer;
+  }
+  .btn-google:hover{ background-color:var(--secondary); }
+
+  .warn-box{
+    display:flex; gap:.75rem; border:1px solid color-mix(in oklab, var(--gold) 55%, var(--border));
+    background-color: color-mix(in oklab, var(--gold) 12%, var(--card));
+    color: color-mix(in oklab, var(--gold) 55%, var(--foreground));
+    border-radius:.6rem; padding:.85rem 1rem; font-size:.85rem; line-height:1.45;
+  }
+
